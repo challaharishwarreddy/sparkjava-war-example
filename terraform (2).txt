@@ -1,0 +1,110 @@
+aws cli
+
+aws configure
+
+accesskey
+secretkey
+region
+outputformat
+
+
+
+az login
+
+install terraform
+
+mkdir terraformaws
+cd terraformaws
+vi main.tf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.16"
+    }
+  }
+
+  required_version = ">= 1.2.0"
+}
+
+provider "aws" {
+  region  = "us-west-2"
+  profile = "default"
+}
+
+resource "aws_instance" "app_server" {
+  ami           = "ami-830c94e3"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "ExampleAppServerInstance"
+  }
+}
+
+
+
+terraform init
+terraform validate
+terraform plan
+terraform apply
+terraform show
+terraform destroy
+
+
+
+
+
+
+
+
+# Configure the Azure provider
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.0.2"
+    }
+  }
+
+  required_version = ">= 1.1.0"
+}
+
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "rg" {
+  name     = "myTFResourceGroup"
+  location = "westus2"
+}
+
+
+
+
+
+
+
+
+
+ami-0fcf52bcf5db7b003
+
